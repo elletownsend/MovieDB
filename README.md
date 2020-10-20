@@ -6,8 +6,8 @@ More Information to come...
 
 ---
 In the project directory, you can run:
-`npm start` to run the app in development mode.
-`npm run build` to build the app for production.
+- `npm start` to run the app in development mode.
+- `npm run build` to build the app for production.
 
 If you fork this code, please remember to:
 - `npm init`

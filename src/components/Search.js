@@ -2,11 +2,11 @@ import React from 'react';
 
 // Functional Component
 
-const Search = () => {
+const Search = (props) => {
     return (
         <section>
-            <form action="">
-                <input placeholder="Search..." type="text" />
+            <form action="" onSubmit={props.handleSubmit}>
+                <input placeholder="Search..." type="text" onChange={props.handleChange} />
             </form>
         </section>
     )

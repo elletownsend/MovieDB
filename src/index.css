@@ -1,7 +1,7 @@
 body {
   margin: 0;
   box-sizing: border-box;
-  margin-top: 10%;
+  margin: 5% 10% 0 10%;
   margin-left: 10%;
 }
 
@@ -21,7 +21,11 @@ h4, p, span, div, section, form, input {
 }
 
 /* Search */
-input {
+.search_wrapper {
+  padding: 10px 0;
+}
+
+input[type=text] {
   min-height: 50px;
   width: 100%;
   max-width: 420px;
@@ -38,6 +42,20 @@ input {
   transition: 0.4s ease;
 }
 
-input:focus {
-  box-shadow: 0px 5px 10px rgba(87,184,148,0.2);
+button {
+  max-width: 55px;
+  height: 35px;
+  padding: 0 20px;
+
+  z-index: 1;
+  position: relative;
+  left: -65px;
+
+  background-color: #57B894;
+  color: #fff;
+  box-shadow: 0px 2px 5px 0px rgba(87,184,148,0.2);
+
+  border-radius: 10px;
+  border: none;
+  outline: none;
 }

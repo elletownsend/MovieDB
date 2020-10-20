@@ -4,9 +4,12 @@ import React from 'react';
 
 const Search = (props) => {
     return (
-        <section>
+        <section className="search_wrapper">
             <form action="" onSubmit={props.handleSubmit}>
                 <input placeholder="Search..." type="text" onChange={props.handleChange} />
+                <button type="submit" onClick={props.handleSubmit}>
+                    <i className="fas fa-search"></i>
+                </button>
             </form>
         </section>
     )

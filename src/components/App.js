@@ -31,7 +31,7 @@ class App extends Component {
   render() {
     return (
       <div className="App" >
-        <h1 className="header_title">Movie Database</h1>
+        <h1 className="header_title">Movie Database 🎥🍿</h1>
         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
       </div>
     );

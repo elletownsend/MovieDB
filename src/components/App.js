@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Search from './Search';
+import MovieList from './MovieList';
 
 import axios from 'axios';
 
@@ -18,8 +19,7 @@ class App extends Component {
 
     axios.get(this.apiURL + "&s=" + this.state.searchInput)
       .then(res => {
-        let movies = res.data.Search;
-        console.log(movies);
+        let movies = res.data.Search; // API returns data{ search { results etc...
         this.setState({ movies: movies });
       })
   }
@@ -33,6 +33,7 @@ class App extends Component {
       <div className="App" >
         <h1 className="header_title">Movie Database</h1>
         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+        <MovieList movies={this.state.movies} />
       </div>
     );
   }

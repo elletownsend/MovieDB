@@ -11,7 +11,7 @@ h1, h2, h3, span, .default_img {
   font-family: 'Poppins', sans-serif;
 }
 
-h4, p, div, section, form, input {
+h4, p, div, section, form, input, .votes {
   font-family: 'Avenir', sans-serif;
 }
 
@@ -176,7 +176,6 @@ button {
   margin-left: 10px;
 }
 
-/* Movie Info */
 .info_wrapper {
   width: 80%;
   margin: 0 auto;
@@ -184,6 +183,12 @@ button {
 
 .info {
   margin: 20px;
+}
+
+.votes {
+  font-size: 0.875rem;
+  margin-left: 10px;
+  color: rgba(34,34,34,0.75);
 }
 
 .backdrop_img {

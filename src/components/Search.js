@@ -7,7 +7,7 @@ const Search = (props) => {
         <section className="search_wrapper">
             <form action="" onSubmit={props.handleSubmit}>
                 <input placeholder="Search..." type="text" onChange={props.handleChange} />
-                <button type="submit" onClick={props.handleSubmit}>
+                <button className="search_btn" type="submit" onClick={props.handleSubmit}>
                     <i className="fas fa-search"></i>
                 </button>
             </form>

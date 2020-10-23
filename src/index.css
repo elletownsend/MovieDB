@@ -11,7 +11,7 @@ h1, h2, h3, span, .default_img {
   font-family: 'Poppins', sans-serif;
 }
 
-h4, p, div, section, form, input, .votes {
+h4, p, div, section, form, input, .votes, .votes span {
   font-family: 'Avenir', sans-serif;
 }
 
@@ -185,9 +185,13 @@ button {
   margin: 20px;
 }
 
+.star-ratings {
+  margin-right: 10px;
+}
+
 .votes {
+  display: inline-block;
   font-size: 0.875rem;
-  margin-left: 10px;
   color: rgba(34,34,34,0.75);
 }
 

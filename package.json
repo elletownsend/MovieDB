@@ -9,6 +9,7 @@
     "axios": "^0.20.0",
     "react": "^16.14.0",
     "react-dom": "^16.14.0",
+    "react-number-format": "^4.4.1",
     "react-scripts": "3.4.3",
     "react-star-ratings": "^2.3.0"
   },

@@ -1,5 +1,6 @@
 import React from 'react'
 import StarRatings from 'react-star-ratings';
+import NumberFormat from 'react-number-format';
 
 const MovieInfo = (props) => {
     return (
@@ -23,7 +24,7 @@ const MovieInfo = (props) => {
                                 numberOfStars={5}
                                 name='rating'
                             />
-                            <span className="votes">{props.currentMovie.vote_count} Total Votes</span>
+                            <div className="votes"><NumberFormat value={props.currentMovie.vote_count} displayType={'text'} thousandSeparator={true} /> Total Votes</div>
                         </span>
                         : <span className="rating">No Ratings</span>
                 }

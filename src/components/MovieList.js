@@ -9,7 +9,7 @@ const MovieList = (props) => {
             {
                 props.movies.map((movie, i) => { // basically replaces a for loop for rendering each item in the movies array
                     return (
-                        <Movie key={i} image={movie.Poster} title={movie.Title} /> // When rendering a list, need to provide key props
+                        <Movie key={i} image={movie.poster_path} title={movie.title} /> // When rendering a list, need to provide key props
                     )
                 })
             }

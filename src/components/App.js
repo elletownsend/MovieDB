@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import MovieList from './MovieList';
+import Pagination from './Pagination';
 
 import axios from 'axios';
 
@@ -9,18 +10,19 @@ class App extends Component {
     super();
     this.state = {
       movies: [],
-      searchInput: ""
+      searchInput: "",
+      totalResults: 0,
+      currentPage: 1
     }
-    this.apiURL = "http://www.omdbapi.com/?i=" + process.env.REACT_APP_API_I + "&apikey=" + process.env.REACT_APP_API_KEY;
+    this.apiURL = "https://api.themoviedb.org/3/search/movie?api_key=" + process.env.REACT_APP_API_KEY + "&query=";
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.get(this.apiURL + "&s=" + this.state.searchInput)
-      .then(res => {
-        let movies = res.data.Search; // API returns data{ search { results etc...
-        this.setState({ movies: movies });
+    axios.get(this.apiURL + this.state.searchInput)
+      .then(data => {
+        this.setState({ movies: data.data.results, totalResults: data.data.total_results });
       })
   }
 
@@ -28,12 +30,21 @@ class App extends Component {
     this.setState({ searchInput: e.target.value })
   }
 
+  nextPage = (pageNumber) => {
+    axios.get(this.apiURL + this.state.searchInput + "&page=" + pageNumber)
+      .then(data => {
+        this.setState({ movies: data.data.results, currentPage: pageNumber });
+      })
+  }
+
   render() {
+    const numberOfPages = Math.floor(this.state.totalResults / 20); // Total number of pages to show 20 items per page
     return (
       <div className="App" >
         <h1 className="header_title">Movie Database</h1>
         <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
         <MovieList movies={this.state.movies} />
+        { this.state.totalResults > 20 ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
       </div>
     );
   }

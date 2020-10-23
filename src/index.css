@@ -65,18 +65,28 @@ button {
   margin: 20px;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
 
 .card {
   padding: 20px 10px;
+  width: 260px
 }
 
 img {
-  width: 100%;
   height: 385px;
 }
 
 .default_img {
   min-height: 385px;
-  max-width: 300px;
+  min-width: 260px;
+
+  background-color: lightgray;
+  color: #fff;
+
+  font-family: 'Poppins', sans-serif;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

@@ -4,6 +4,10 @@ A React.js web app for searching for your information on your favourite movies. 
 
 More Information to come...
 
+// TO DO
+- Styling for mobile view. Responsive search bar
+- Movie detail view
+
 ---
 In the project directory, you can run:
 - `npm start` to run the app in development mode.

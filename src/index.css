@@ -15,9 +15,6 @@ h4, p, div, section, form, input, .votes, .votes span {
   font-family: 'Avenir', sans-serif;
 }
 
-/* Header?? */
-
-
 /* Search */
 .search_wrapper {
   padding: 10px 0;
@@ -28,6 +25,8 @@ form {
 }
 
 input[type=text] {
+  font-size: 0.9rem;
+
   min-height: 50px;
   width: 100%;
   max-width: 450px;
@@ -207,6 +206,12 @@ button {
   width: 100%;
   padding-top: 54.166666666667%;
   height: 0;
+}
+
+/* footer */
+footer {
+  color:  rgba(34,34,34,0.75);
+  text-align: center;
 }
 
 /* Media Queries */

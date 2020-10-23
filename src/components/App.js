@@ -3,6 +3,7 @@ import Search from './Search';
 import MovieList from './MovieList';
 import MovieInfo from './MovieInfo';
 import Pagination from './Pagination';
+import Footer from './Footer';
 
 import axios from 'axios';
 
@@ -61,6 +62,7 @@ class App extends Component {
           <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} />
         }
         { this.state.totalResults > 20 && this.state.currentMovie == null ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
+        <Footer />
       </div>
     );
   }

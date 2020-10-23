@@ -16,19 +16,21 @@ h4, p, span, div, section, form, input {
 }
 
 /* Header */
-.header_title {
 
-}
 
 /* Search */
 .search_wrapper {
   padding: 10px 0;
 }
 
+form {
+  display: flex;
+}
+
 input[type=text] {
   min-height: 50px;
   width: 100%;
-  max-width: 420px;
+  max-width: 450px;
 
   border: none;
   outline: none;
@@ -49,6 +51,7 @@ button {
 
   z-index: 1;
   position: relative;
+  top: 9px;
   left: -65px;
 
   background-color: #57B894;
@@ -161,14 +164,8 @@ img {
 /* Media Queries */
 
 @media screen and (max-width: 630px) {
-  input[type=text] {
-    width: 95%;
-  }
-
-  button {
-    top: 110px;
-    left: 75%;
-    position: absolute;
+  .header_title {
+    font-size: 1.5rem;
   }
 
   .card_wrapper {

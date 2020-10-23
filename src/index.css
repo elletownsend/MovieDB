@@ -68,18 +68,44 @@ button {
   justify-content: center;
 }
 
+.card_wrapper {
+  padding: 20px 20px;
+  width: 260px;
+}
+
 .card {
-  padding: 20px 10px;
-  width: 260px
+  border-radius: 15px;
+
+  min-height: 465px;
+
+  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card h4 {
+  margin: 0;
+  padding: 20px;
+
+  white-space: pre-line;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card_link {
+  text-decoration: none;
 }
 
 img {
   height: 385px;
+  width: 100%;
+
+  border-radius: 15px 15px 0 0;
 }
 
 .default_img {
   min-height: 385px;
   min-width: 260px;
+
+  border-radius: 15px 15px 0 0;
 
   background-color: lightgray;
   color: #fff;
@@ -89,4 +115,38 @@ img {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Pagination */
+.pagination_container {
+  margin-top: 15px;
+  margin-bottom: 30px;
+}
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.pagination_link {
+  margin: 5px;
+  background-color: #fff;
+}
+
+.pagination_link a {
+  padding: 10px 12px;
+  border-radius: 5px;
+  border: none;
+
+  color: #222;
+  text-decoration: none;
+}
+
+.active a {
+  background-color: #57B894;
+  color: #fff;
 }

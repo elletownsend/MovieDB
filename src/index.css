@@ -78,16 +78,22 @@ button {
 
   min-height: 465px;
 
-  box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.15);
+	box-shadow: 8px 14px 38px rgba(39, 44, 49, 0.06), 1px 3px 8px rgba(39, 44, 49, 0.03);
+    
+  transition: all 0.5s ease;
+}
+
+.card:hover {
+  box-shadow: 8px 28px 50px rgba(39, 44, 49, 0.07), 1px 6px 12px rgba(39, 44, 49, 0.04);
+	transform: translate3D(0, -1px, 0) scale(1.02);
+	transition: all 0.4s ease;
 }
 
 .card h4 {
   margin: 0;
   padding: 20px;
 
-  white-space: pre-line;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  color: #222;
 }
 
 .card_link {

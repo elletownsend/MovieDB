@@ -132,6 +132,7 @@ img {
 .pagination {
   display: flex;
   flex-direction: row;
+  justify-content: center;
 
   list-style-type: none;
   margin: 0;
@@ -155,4 +156,22 @@ img {
 .active a {
   background-color: #57B894;
   color: #fff;
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 630px) {
+  input[type=text] {
+    width: 95%;
+  }
+
+  button {
+    top: 110px;
+    left: 75%;
+    position: absolute;
+  }
+
+  .card_wrapper {
+    min-width: 270px;
+  }
 }

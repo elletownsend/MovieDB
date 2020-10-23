@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Search from './Search';
 import MovieList from './MovieList';
+import MovieInfo from './MovieInfo';
 import Pagination from './Pagination';
 
 import axios from 'axios';
@@ -12,7 +13,8 @@ class App extends Component {
       movies: [],
       searchInput: "",
       totalResults: 0,
-      currentPage: 1
+      currentPage: 1,
+      currentMovie: null
     }
     this.apiURL = "https://api.themoviedb.org/3/search/movie?api_key=" + process.env.REACT_APP_API_KEY + "&query=";
   }
@@ -37,14 +39,28 @@ class App extends Component {
       })
   }
 
+  viewMovieInfo = (id) => {
+    const selectedMovie = this.state.movies.filter(movie => movie.id === id);
+    const newCurrentMovie = selectedMovie.length > 0 ? selectedMovie[0] : null;
+    this.setState({ currentMovie: newCurrentMovie });
+  }
+
+  closeMovieInfo = () => {
+    this.setState({ currentMovie: null });
+  }
+
   render() {
     const numberOfPages = Math.floor(this.state.totalResults / 20); // Total number of pages to show 20 items per page
     return (
       <div className="App" >
-        <h1 className="header_title">Movie Database</h1>
-        <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
-        <MovieList movies={this.state.movies} />
-        { this.state.totalResults > 20 ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
+        { this.state.currentMovie == null ?
+          <section>
+            <h1 className="header_title">Movie Database</h1> <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+            <MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} />
+          </section> :
+          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} />
+        }
+        { this.state.totalResults > 20 && this.state.currentMovie == null ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
       </div>
     );
   }

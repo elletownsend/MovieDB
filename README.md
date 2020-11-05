@@ -14,7 +14,7 @@ In the project directory, you can run:
 
 If you fork this code, please remember to:
 - `npm init`
-- create a `.env` file containing your `REACT_APP_API_KEY` and `REACT_APP_API_I` credentials (*PLEASE* don't forget to add `.env` to your `.gitignore`)
-- You will need to register for an API key, find out more here <http://www.omdbapi.com/>
+- create a `.env` file containing your `REACT_APP_API_KEY` credentials (*PLEASE* don't forget to add `.env` to your `.gitignore`)
+- You will need to register for an API key, find out more here <https://www.themoviedb.org/documentation/api>
 
 (This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).)

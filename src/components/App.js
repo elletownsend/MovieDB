@@ -26,6 +26,7 @@ class App extends Component {
     axios.get(this.apiURL + this.state.searchInput)
       .then(data => {
         this.setState({ movies: data.data.results, totalResults: data.data.total_results });
+        this.setState({ currentPage: 1 });
       })
   }
 
@@ -56,7 +57,8 @@ class App extends Component {
       <div className="App" >
         { this.state.currentMovie == null ?
           <section>
-            <h1 className="header_title">Movie Database</h1> <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
+            <h1 className="header_title">Movie Database</h1>
+            <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
             <MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} />
           </section> :
           <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} />

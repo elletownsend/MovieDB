@@ -64,6 +64,7 @@ class App extends Component {
           <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} />
         }
         { this.state.totalResults > 20 && this.state.currentMovie == null ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
+        {/* in tutorial && this.state.currentMovie == null removed - needs to be added later */}
         <Footer />
       </div>
     );

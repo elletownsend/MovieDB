@@ -158,11 +158,6 @@ button {
   text-decoration: none;
 }
 
-.active a {
-  background-color: #57B894;
-  color: #fff;
-}
-
 /* Movie Info */
 .back {
   cursor: pointer;

@@ -1,8 +1,6 @@
 import React from 'react';
 import Movie from './Movie';
 
-// Functional Component
-
 const MovieList = (props) => {
     return (
         <section className="movie_list_wrapper">

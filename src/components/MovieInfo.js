@@ -1,11 +1,12 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 import StarRatings from 'react-star-ratings';
 import NumberFormat from 'react-number-format';
 
 const MovieInfo = (props) => {
     return (
         <div className="info_wrapper">
-            <button className="back" onClick={props.closeMovieInfo}><i className="fas fa-arrow-left"></i><span>Back</span></button>
+            <Link to="/" className="back" onClick={props.closeMovieInfo}><i className="fas fa-arrow-left"></i><span>Back</span></Link>
             <section className="info">
                 {
                     props.currentMovie.backdrop_path == null ? <div className="default_backdrop"></div> : <img className="backdrop_img" src={`https://image.tmdb.org/t/p/w500/${props.currentMovie.backdrop_path}`} alt="Movie Poster" />

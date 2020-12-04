@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
         <footer>
-            made with ❤️ by elle
+            made with <span role="img" aria-label="heart">❤️</span> by elle
         </footer>
     )
 }

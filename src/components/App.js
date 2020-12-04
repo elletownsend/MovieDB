@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Search from './Search';
 import MovieList from './MovieList';
 import MovieInfo from './MovieInfo';
@@ -7,67 +8,84 @@ import Footer from './Footer';
 
 import axios from 'axios';
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      movies: [],
-      searchInput: "",
-      totalResults: 0,
-      currentPage: 1,
-      currentMovie: null
-    }
-    this.apiURL = "https://api.themoviedb.org/3/search/movie?api_key=" + process.env.REACT_APP_API_KEY + "&query=";
-  }
+const App = () => {
+  const [movies, setMovies] = useState([]);
+  const [searchInput, setSearchInput] = useState("");
+  const [totalResults, setTotalResults] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentMovie, setCurrentMovie] = useState(null);
 
-  handleSubmit = (e) => {
+  const apiURL = "https://api.themoviedb.org/3/search/movie";
+  const numberOfPages = Math.floor(totalResults / 20); // Total number of pages to show 20 items per page
+
+  const handleSubmit = (e) => {
     e.preventDefault();
 
-    axios.get(this.apiURL + this.state.searchInput)
-      .then(data => {
-        this.setState({ movies: data.data.results, totalResults: data.data.total_results });
-        this.setState({ currentPage: 1 });
-      })
-  }
+    axios.get(apiURL, {
+      params: {
+        api_key: process.env.REACT_APP_API_KEY,
+        query: searchInput
+      }
+    }).then(data => {
+      setMovies(data.data.results);
+      setTotalResults(data.data.total_results);
+      setCurrentPage(1);
+    });
+  };
 
-  handleChange = (e) => {
-    this.setState({ searchInput: e.target.value })
-  }
+  const handleChange = (e) => {
+    setSearchInput(e.target.value);
+  };
 
-  nextPage = (pageNumber) => {
-    axios.get(this.apiURL + this.state.searchInput + "&page=" + pageNumber)
-      .then(data => {
-        this.setState({ movies: data.data.results, currentPage: pageNumber });
-      })
-  }
+  const nextPage = (pageNumber) => {
+    axios.get(apiURL, {
+      params: {
+        api_key: process.env.REACT_APP_API_KEY,
+        query: searchInput,
+        page: pageNumber
+      }
+    }).then(data => {
+      setMovies(data.data.results);
+      setCurrentPage(pageNumber)
+    });
+  };
 
-  viewMovieInfo = (id) => {
-    const selectedMovie = this.state.movies.filter(movie => movie.id === id);
+  const viewMovieInfo = (id) => {
+    const selectedMovie = movies.filter(movie => movie.id === id);
     const newCurrentMovie = selectedMovie.length > 0 ? selectedMovie[0] : null;
-    this.setState({ currentMovie: newCurrentMovie });
-  }
+    setCurrentMovie(newCurrentMovie);
+  };
 
-  closeMovieInfo = () => {
-    this.setState({ currentMovie: null });
-  }
+  const closeMovieInfo = () => {
+    setCurrentMovie(null);
+  };
 
-  render() {
-    const numberOfPages = Math.floor(this.state.totalResults / 20); // Total number of pages to show 20 items per page
+  if (currentMovie != null) {
     return (
-      <div className="App" >
-        { this.state.currentMovie == null ?
-          <section>
-            <h1 className="header_title">Movie Database</h1>
-            <Search handleSubmit={this.handleSubmit} handleChange={this.handleChange} />
-            <MovieList viewMovieInfo={this.viewMovieInfo} movies={this.state.movies} />
-          </section> :
-          <MovieInfo closeMovieInfo={this.closeMovieInfo} currentMovie={this.state.currentMovie} />
-        }
-        { this.state.totalResults > 20 && this.state.currentMovie == null ? <Pagination pages={numberOfPages} nextPage={this.nextPage} currentPage={this.state.currentPage} /> : ""}
-        {/* in tutorial && this.state.currentMovie == null removed - needs to be added later */}
-        <Footer />
-      </div>
-    );
+      <Router>
+        <Route path="/movie">
+          <div className="App">
+            <MovieInfo closeMovieInfo={closeMovieInfo} currentMovie={currentMovie} />
+          </div>
+        </Route>
+      </Router>
+    )
+  } else {
+    return (
+      <Router>
+        <Route exact path="/">
+          <div className="App">
+            <section>
+              <h1 className="header_title">Movie Database</h1>
+              <Search handleSubmit={handleSubmit} handleChange={handleChange} />
+              <MovieList viewMovieInfo={viewMovieInfo} movies={movies} />
+            </section>
+            {totalResults > 20 ? <Pagination pages={numberOfPages} nextPage={nextPage} currentPage={currentPage} /> : ""}
+            <Footer />
+          </div>
+        </Route>
+      </Router>
+    )
   }
 }
 

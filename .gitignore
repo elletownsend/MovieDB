@@ -12,6 +12,7 @@
 # misc
 .DS_Store
 .env
+.eslintcache
 
 npm-debug.log*
 yarn-debug.log*

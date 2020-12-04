@@ -1,12 +1,12 @@
 import React from 'react';
-
-// Functional Component
+import { Link } from 'react-router-dom';
 
 const Movie = (props) => {
+    const moviePath = `/movie/${props.title}`;
     return (
         <div className="card_wrapper">
             <div className="card">
-                <a href="#" className="card_link" onClick={() => props.viewMovieInfo(props.movieId)}>
+                <Link to={moviePath} className="card_link" onClick={() => props.viewMovieInfo(props.movieId)}>
                     {
                         // Minified if statement, condition ? true : false
                         // image = movie.poster
@@ -15,7 +15,7 @@ const Movie = (props) => {
                     <div className="content">
                         <h4>{props.title}</h4>
                     </div>
-                </a>
+                </Link>
             </div>
         </div>
     )

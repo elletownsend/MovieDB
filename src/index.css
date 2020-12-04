@@ -162,8 +162,9 @@ button {
 .back {
   cursor: pointer;
 
-  color: #fff;
-  background-color: #57B894;
+  color: #222;
+  text-decoration: none;
+  background-color: none;
 }
 
 .back span {
